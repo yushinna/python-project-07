@@ -1,44 +1,34 @@
 {% extends 'layout.html' %}
 {% block body %}
-{% if not profile.first_name %}
-<div class="grid-75">
-    <p>You have an empty profile. Click icon to edit profile!</p>
-</div>
-{% else %}
-<div class="grid-75">
-    <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
-    {% if profile.avatar %}
-    <div>
-        <img src="{{ profile.avatar.url }}" height="150">
+<section class="fdb-block team-3 fp-active" data-block-type="teams" data-id="78" draggable="true">
+    <div class="container">
+        <div class="row text-center justify-content-center mb-5">
+            <div class="col-sm-3 m-sm-auto">
+                {% if not profile.first_name %}
+                <p>You have an empty profile!</p>
+                <a class="btn btn-primary btn-sm" href="{% url 'accounts:edit_profile' %}" role="button">Edit
+                    profile</a>
+                {% else %}
+                {% if profile.avatar %}
+                <img alt="image" class="img-fluid rounded-circle" src="{{ profile.avatar.url }}">
+                {% endif %}
+                <h2><strong>{{ profile.first_name }} {{ profile.last_name }}</strong></h2>
+                <p><em>{{ profile.bio|safe}}</em></p>
+                <h3>Email</h3>
+                <p>{{ profile.email }}</p>
+                <h3>Date of Birth</h3>
+                <p>{{ profile.date_of_birth }}</p>
+                <h3>Country</h3>
+                <p>{{ profile.country }}</p>
+                <h3>Favorite Animal</h3>
+                <p>{{ profile.favorite_animal }}</p>
+                <h3>Hobby</h3>
+                <p>{{ profile.hobby }}</p>
+                <a class="btn btn-primary btn-sm" href="{% url 'accounts:edit_profile' %}" role="button">Edit
+                    profile</a>
+            </div>
+        </div>
     </div>
-    {% endif %}
-    <div>
-        <p>{{ profile.bio|safe}}</p>
-    </div>
-    <div>
-        <table>
-            <tr>
-                <td>Email</td>
-                <td>{{ profile.email }}</td>
-            </tr>
-            <tr>
-                <td>Date of Birth</td>
-                <td>{{ profile.date_of_birth }}</td>
-            </tr>
-            <tr>
-                <td>Country</td>
-                <td>{{ profile.country }}</td>
-            </tr>
-            <tr>
-                <td>Favorite animal</td>
-                <td>{{ profile.favorite_animal }}</td>
-            </tr>
-            <tr>
-                <td>Hobby</td>
-                <td>{{ profile.hobby }}</td>
-            </tr>
-        </table>
-    </div>
-</div>
+</section>
 {% endif %}
 {% endblock %}
