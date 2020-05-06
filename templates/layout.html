@@ -3,71 +3,185 @@
 <html lang="en">
 
 <head>
-
-    <!-- Basic Page Needs
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <title>{% block title %}Circle{% endblock %}</title>
-
-    <!-- Mobile Specific Metas
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <title>{% block title %}Home{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/froala/design-blocks@master/dist/css/froala_blocks.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/froala-editor/css/froala_editor.pkgd.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/froala-editor/css/froala_style.min.css">
 
-    <!-- FONTS
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
+    <style data-fp="">
+        body,
+        html {
+            margin: 0;
+            height: 100%;
+        }
 
-    <!-- CSS
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="{% static "css/global.css" %}">
+        body.no-block {
+            flex-flow: column;
+            overflow-x: hidden;
+            display: flex;
+        }
 
-    <!-- JS
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <script type="text/javascript" src="{% static "js/autogrow.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/global.js" %}"></script>
+        body {
+            background: #DEDEDE;
+        }
 
+        .fp-no-block {
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-direction: column;
+            cursor: pointer;
+            color: #444;
+            display: none;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-align: center;
+            background: #FFF;
+            transition: margin 0.25s linear 0.25s;
+        }
 
+        .fp-no-block:hover {
+            background: #EFEFEF;
+        }
+
+        .fp-no-block.fp-visible {
+            display: flex;
+        }
+
+        .fp-no-sections {
+            flex: 2;
+        }
+
+        .fp-no-block p {
+            margin: 0;
+        }
+
+        .fp-no-sections p+p {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .fdb-block {
+            box-shadow: 0;
+            margin-bottom: 0;
+            transition: margin 0.25s linear 0.25s;
+        }
+
+        .fp-active {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.14), 0 0px 6px rgba(0, 0, 0, 0.16);
+            -moz-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.14), 0 0px 6px rgba(0, 0, 0, 0.16);
+            -webkit-box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.14), 0 0px 6px rgba(0, 0, 0, 0.16);
+            z-index: 9999;
+        }
+
+        body.fp-add-view [data-block-type],
+        body.fp-add-view .fp-no-block {
+            margin-bottom: 20px;
+        }
+
+        body.fp-add-view [data-block-type] {
+            user-select: none;
+            position: relative;
+        }
+
+        body.fp-add-view section[data-block-type] {
+            cursor: move;
+        }
+
+        body.fp-add-view [data-block-type]:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            display: block;
+            z-index: 10000;
+            content: "";
+        }
+
+        .fp-drop-placeholder {
+            height: 200px;
+            width: 100%;
+            border: solid 10px #0098f7;
+            background: #FFF;
+            margin-bottom: 20px;
+        }
+
+        .fp-dragging {
+            display: none;
+        }
+
+        .fr-popup {
+            z-index: 10000 !important;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="circle--header">
-        <div class="bounds">
-            <div class="circle--fluid">
-                <div class="circle--fluid--cell">
-                    <h1 class="hide-text circle--logo"><a class="logo" href="{% url 'home' %}">Circle</a>
-                    </h1>
+    <header class="bg-dark" data-block-type="headers" data-id="76">
+        <div class="container">
+            <nav class="navbar navbar-expand-md">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav8"
+                    aria-controls="navbarNav8" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav8">
+                    <ul class="navbar-nav mr-auto ml-auto">
+                        <li class="nav-item active"><a class="nav-link" contenteditable="false" href="{% url 'home' %}"
+                                style="outline: none; display: inline-block;">Home&nbsp;<span
+                                    class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a class="nav-link" contenteditable="false"
+                                href="{% url 'accounts:profile' %}"
+                                style="outline: none; display: inline-block;">Profile</a></li>
+                        {% if not user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" contenteditable="false"
+                                href="{% url 'accounts:sign_in' %}" style="outline: none; display: inline-block;">Sign
+                                in</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" contenteditable="false" href="https://www.froala.com"
+                                style="outline: none; display: inline-block;">Account</a></li>
+                        <li class="nav-item"><a class="nav-link" contenteditable="false"
+                                href="{% url 'accounts:sign_out' %}" style="outline: none; display: inline-block;">Sign
+                                out</a></li>
+                        {% endif %}
+                    </ul>
                 </div>
-                <div class="circle--fluid--cell circle--fluid--secondary">
-                    <nav>
-                        <ul class="circle--inline">
-                            {% if not user.is_authenticated %}
-                            <li><a href="{% url 'accounts:sign_up' %}">Sign Up</a></li>
-                            <li><a href="{% url 'accounts:sign_in' %}">Sign In</a></li>
-                            {% else %}
-                            <li><a href="{% url 'accounts:change_password' %}">Change password</a></li>
-                            <li><a href="{% url 'accounts:edit_profile' %}">Edit profile</a></li>
-                            <li><a href="{% url 'accounts:profile' %}">View profile</a></li>
-                            <li><a href="{% url 'accounts:sign_out' %}">Sign Out</a></li>
-                            {% endif %}
-                        </ul>
-                    </nav>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div>
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            {% block body %}{% endblock %}
+        </div>
+        <div>
+    </section>
+    <footer class="fdb-block footer-small" data-block-type="footers" data-id="61">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col">
+                    <p>© 2020 Minimal Profile. All Rights Reserved</p>
                 </div>
             </div>
         </div>
-    </header>
-
-    <div class="bounds circle--page">
-        {% if messages %}
-        <ul class="messages centered grid-50">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-                {% endfor %}
-        </ul>
-        {% endif %}
-        {% block body %}{% endblock %}
-    </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/froala-editor/js/froala_editor.pkgd.min.js"></script>
 </body>
 
 </html>
