@@ -1,3 +1,4 @@
+import bootstrap_datepicker_plus as datetimepicker
 from django import forms
 
 from . import models
@@ -21,6 +22,11 @@ class ProfileForm(forms.ModelForm):
             'hobby',
             'email',
         ]
+        widgets = {
+            'date_of_birth': datetimepicker.DatePickerInput(
+                format='%Y-%m-%d'
+            )
+        }
 
     def clean(self):
         cleaned_data = super(ProfileForm, self).clean()
