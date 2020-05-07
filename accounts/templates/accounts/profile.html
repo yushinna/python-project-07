@@ -1,4 +1,5 @@
 {% extends 'layout.html' %}
+{% load static from staticfiles %}
 {% block body %}
 <section class="fdb-block team-3 fp-active" data-block-type="teams" data-id="78" draggable="true">
     <div class="container">
@@ -11,6 +12,9 @@
                 {% else %}
                 {% if profile.avatar %}
                 <img alt="image" class="img-fluid rounded-circle" src="{{ profile.avatar.url }}">
+                {% else %}
+                <img alt="image" class="img-fluid rounded-circle"
+                    src="{% static 'accounts/images/icons8-happy-100.png' %}">
                 {% endif %}
                 <h2><strong>{{ profile.first_name }} {{ profile.last_name }}</strong></h2>
                 <p><em>{{ profile.bio|safe}}</em></p>
@@ -24,7 +28,7 @@
                 <p>{{ profile.favorite_animal }}</p>
                 <h3>Hobby</h3>
                 <p>{{ profile.hobby }}</p>
-                <a class="btn btn-primary btn-sm" href="{% url 'accounts:edit_profile' %}" role="button">Edit
+                <a class="btn btn-primary mt-4" href="{% url 'accounts:edit_profile' %}" role="button">Edit
                     profile</a>
             </div>
         </div>
