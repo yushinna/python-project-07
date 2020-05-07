@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load widget_tweaks %}
 {% block title %}Sign Up | {{ super }}{% endblock %}
 {% block body %}
 <section class="fdb-block fp-active" data-block-type="forms" data-id="80" draggable="true">
@@ -15,18 +16,17 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col mt-4">
-                                <input name='username' type="text" class="form-control" placeholder="Userame">
+                                {% render_field form.username class="form-control" placeholder="Username" %}
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col ">
-                                <input name='password1' type="text" class="form-control" placeholder="Password">
+                                {% render_field form.password1 class="form-control" placeholder="Password" %}
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col">
-                                <input name='password2' type="password_confirmation" class="form-control mb-1"
-                                    placeholder="Password comfirmation">
+                                {% render_field form.password2 class="form-control" placeholder="Password confirmation" %}
                                 <p class="text-right">Already have an
                                     account? <a href="{% url 'accounts:sign_in' %}">Sing in</a></p>
                             </div>
