@@ -10,7 +10,6 @@ class Profile(models.Model):
     )
     avatar = models.ImageField(
         upload_to='images',
-        default='no-image.png',
         blank=True
     )
     first_name = models.CharField(max_length=255, default='')
