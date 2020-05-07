@@ -20,7 +20,7 @@ def sign_in(request):
                 if user.is_active:
                     login(request, user)
                     return HttpResponseRedirect(
-                        reverse('home')
+                        reverse('accounts:profile')
                     )
                 else:
                     messages.error(
@@ -50,7 +50,7 @@ def sign_up(request):
                 request,
                 "You're now a user! You've been signed in, too."
             )
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('accounts:profile'))
     return render(request, 'accounts/sign_up.html', {'form': form})
 
 
@@ -79,7 +79,7 @@ def edit_profile(request):
             form.save()
             messages.success(request, 'Updated the Profile Successfully!')
             return HttpResponseRedirect(reverse('accounts:profile'))
-    return render(request, 'accounts/edit_profile.html', {'form': form})
+    return render(request, 'accounts/edit_profile.html', {'form': form, 'profile': profile})
 
 
 @login_required
