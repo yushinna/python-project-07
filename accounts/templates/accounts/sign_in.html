@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-
+{% load widget_tweaks %}
 {% block title %}Sign In | {{ super }}{% endblock %}
 
 {% block body %}
@@ -17,12 +17,12 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col mt-4">
-                                <input name='username' type="text" class="form-control" placeholder="Userame">
+                                {% render_field form.username class="form-control" placeholder="Username" %}
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col ">
-                                <input name='password1' type="text" class="form-control" placeholder="Password">
+                                {% render_field form.password class="form-control" placeholder="Password" %}
                             </div>
                         </div>
                         <div class="row mt-4">
@@ -38,5 +38,4 @@
         </div>
     </div>
 </section>
-
 {% endblock %}
