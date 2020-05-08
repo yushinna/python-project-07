@@ -14,7 +14,8 @@ class Profile(models.Model):
     )
     first_name = models.CharField(max_length=255, default='')
     last_name = models.CharField(max_length=255, default='')
-    date_of_birth = models.DateField(default='2000-12-31', blank=True)
+    date_of_birth = models.DateField(
+        default='2000-12-31', blank=True, null=True)
     bio = models.TextField(default='', blank=True)
     email = models.EmailField(default='', blank=True)
     country = models.CharField(max_length=255, default='', blank=True)
