@@ -3,8 +3,14 @@
 An user profile web page, which includes first name, last name, email, date of birth, confirm email, short bio and the option to upload an avatar. The profile page should only be visible and editable once the user has logged in.
 
 ## Screenshot
-### User profile page
+### Home
+<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/home.png" width="600">
 
+### Sing in
+<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/sign_in.png" width="600">
+
+### Profile
+<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/profile.png" width="600">
 
 ## Requirements
 Install the project requirements from the provided Pipfile by running the following command in your terminal:
