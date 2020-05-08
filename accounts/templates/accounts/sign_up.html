@@ -2,7 +2,17 @@
 {% load widget_tweaks %}
 {% block title %}Sign Up | {{ super }}{% endblock %}
 {% block body %}
+
+{% if form.errors %}
+<div class="alert alert-danger">
+    {% for errors in form.errors.values %}
+    {% for error in errors %}
+    {{ error }}<br>
+    {% endfor %}
+    {% endfor %}
+</div>
 {% endif %}
+
 <section class="fdb-block fp-active" data-block-type="forms" data-id="80" draggable="true">
     <div class="container">
         <div class="row justify-content-center">
