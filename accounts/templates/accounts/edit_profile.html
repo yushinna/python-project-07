@@ -4,9 +4,7 @@
 {% block extrahead %}
 {{ form.media }}
 {% endblock %}
-
 {% block title %}Edit Profile | {{ user }} {{ super }}{% endblock %}
-
 {% block body %}
 <section class="fdb-block fp-active" data-block-type="forms" data-id="2" draggable="true">
     <div class="container">
@@ -43,7 +41,7 @@
                         </div>
                     </div>
                     <div class="row align-items-center mt-4">
-                        <div class=" col">
+                        <div class="col">
                             {% render_field form.bio class="form-control" placeholder="Enter a short bio" %}
                         </div>
                     </div>
