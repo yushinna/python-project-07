@@ -4,13 +4,13 @@ An user profile web page, which includes first name, last name, email, date of b
 
 ## Screenshot
 ### Home
-<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/home.png" width="600">
+<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/home.png" width="400">
 
 ### Sing in
-<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/sign_in.png" width="600">
+<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/signin.png" width="400">
 
 ### Profile
-<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/profile.png" width="600">
+<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/profile.png" width="400">
 
 ## Requirements
 Install the project requirements from the provided Pipfile by running the following command in your terminal:
