@@ -6,9 +6,6 @@ An user profile web page, which includes first name, last name, email, date of b
 ### Home
 <img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/home.png" width="400">
 
-### Sing in
-<img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/signin.png" width="400">
-
 ### Profile
 <img src="https://raw.githubusercontent.com/yushinna/python-project-07/images/profile.png" width="400">
 
