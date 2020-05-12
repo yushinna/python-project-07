@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -68,7 +68,12 @@ def profile(request):
 @login_required
 def edit_profile(request):
     profile = request.user.profile
-    form = forms.ProfileForm(instance=profile)
+    form = forms.ProfileForm(
+        instance=profile,
+        initial={
+            'confirm_email': profile.email
+        }
+    )
 
     if request.method == 'POST':
         form = forms.ProfileForm(
