@@ -1,6 +1,5 @@
 from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
-from .models import Profile
 
 
 class ViewsTests(TestCase):
@@ -65,7 +64,7 @@ class ViewsTests(TestCase):
         }
         resp = self.client.post(
             reverse('accounts:edit_profile'),
-            data=user_data
+            data=profile_data
         )
         self.assertEqual(resp.status_code, 200)
 
