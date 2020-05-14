@@ -40,16 +40,24 @@ def sign_up(request):
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            user = authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password1']
-            )
-            login(request, user)
-            messages.success(
-                request,
-                "You're now a user! You've been signed in, too."
-            )
-            return HttpResponseRedirect(reverse('accounts:profile'))
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            if username.lower() in password.lower():
+                messages.error(
+                    request,
+                    "Password is too similar to the username."
+                )
+            else:
+                user = authenticate(
+                    username=username,
+                    password=password
+                )
+                login(request, user)
+                messages.success(
+                    request,
+                    "You're now a user! You've been signed in, too."
+                )
+                return HttpResponseRedirect(reverse('accounts:profile'))
     return render(request, 'accounts/sign_up.html', {'form': form})
 
 
@@ -89,17 +97,35 @@ def edit_profile(request):
 @login_required
 def change_password(request):
     form = PasswordChangeForm(request.user)
+    profile = request.user.profile
 
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
 
         if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
+            new_password = form.cleaned_data['new_password1']
+            if profile.user.username.lower() in new_password.lower():
+                messages.error(
+                    request,
+                    "Password is too similar to the username."
+                )
+            elif profile.first_name.lower() in new_password.lower():
+                messages.error(
+                    request,
+                    "Password is too similar to the first name."
+                )
+            elif profile.last_name.lower() in new_password.lower():
+                messages.error(
+                    request,
+                    "Password is too similar to the last name."
+                )
+            else:
+                user = form.save()
+                update_session_auth_hash(request, user)
 
-            messages.success(
-                request, 'Your password was successfully updated!')
-            return HttpResponseRedirect(reverse('accounts:change_password'))
+                messages.success(
+                    request, 'Your password was successfully updated!')
+                return HttpResponseRedirect(reverse('accounts:change_password'))
         else:
             messages.error(
                 request,
