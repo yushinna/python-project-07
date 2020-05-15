@@ -39,7 +39,6 @@ def sign_up(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
-            form.save()
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             if username.lower() in password.lower():
@@ -48,6 +47,7 @@ def sign_up(request):
                     "Password is too similar to the username."
                 )
             else:
+                form.save()
                 user = authenticate(
                     username=username,
                     password=password
