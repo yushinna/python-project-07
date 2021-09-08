@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 Django = "==1.11.28"
-Pillow = "==6.2.2"
+Pillow = "==8.3.2"
 django-widgets-improved = "*"
 django-bootstrap-datepicker-plus = "*"
 
